@@ -1,6 +1,5 @@
 import winston from "winston";
 
-// Dive deep into it
 const enumerateErrorFormat = winston.format((info) => {
   if (info instanceof Error) {
     Object.assign(info, { message: info.stack });
@@ -17,7 +16,7 @@ const logger = winston.createLogger({
       ? winston.format.colorize()
       : winston.format.uncolorize(),
 
-    winston.format.splat(),
+    winston.format.splat(), // Allows Placeholders - logger.info("User %s logged in", username);
 
     winston.format.printf(({ level, message }) => {
       return `${level}: ${message}`;
