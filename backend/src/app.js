@@ -55,6 +55,8 @@ app.use((req, res, next) => {
 
 // Error handling
 app.use((err, req, res, next) => {
+  console.log("Error caught by error handler: ", err);
+
   res.status(err.status || 500);
   res.send({
     error: {
